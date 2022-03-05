@@ -25,3 +25,5 @@ Run with:
 ```
 $ node generateGMailFilter.js uk-recruiter-email-domains.txt
 ```
+
+Updated output is maintained in this repository at `gmail-filters-from-<domains file>.txt`

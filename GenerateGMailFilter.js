@@ -65,7 +65,7 @@ if (argsArray.length === 1) {
 
         console.log(splitFilterStrings);
 
-        const outputFileName = `filter-string-output.txt`;
+        const outputFileName = 'gmail-filters-from-' + domainsFile;
 
         fs.writeFileSync(outputFileName, fileString);
 

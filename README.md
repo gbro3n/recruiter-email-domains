@@ -14,10 +14,10 @@ To create a filter in GMail, go to `Settings > Filters and blocked addresses` an
 from:(*@domain1.ie OR *@domain2.com ... )
 ```
 
-You can automate the generation of a GMail filter string using `GenerateGMailFilter.js`. Note GMail has a 1500 character limit on filters, so this script splits the filter string at the 1500 character limit.
+You can automate the generation of a GMail filter string using `generateGMailFilter.js`. Note GMail has a 1500 character limit on filters, so this script splits the filter string at the 1500 character limit.
 
 Run with:
 
 ```
-$ node GenerateGMailFilter.js uk-recruiter-email-domains.txt
+$ node generateGMailFilter.js uk-recruiter-email-domains.txt
 ```

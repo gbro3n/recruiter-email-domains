@@ -1,6 +1,6 @@
 # Recruiter Email Domains
 
-This is a list of technical recruiter email domains to assist with the filtering of email from recruitment companies. **This is NOT a spam list** - recruiter contact is welcome and essential, but filtering makes it much easier to separate recruiter email for review at a convenient time.
+This is a list of technical recruiter email domains to assist with the filtering of email from recruitment companies. **This is NOT a spam list** - recruiter contact is welcome and essential for many tech workers, but filtering makes it much easier to separate recruiter email for review at a convenient time.
 
 Other means of managing excessive email from job / contract searches might include maintaining alternate email accounts.
 
@@ -18,7 +18,7 @@ To create a filter in GMail, go to `Settings > Filters and blocked addresses` an
 from:(*@domain1.ie OR *@domain2.com ... )
 ```
 
-You can automate the generation of a GMail filter string using `generateGMailFilter.js`. Note GMail has a 1500 character limit on filters, so this script splits the filter string at the 1500 character limit.
+You can automate the generation of a GMail filter string file using `generateGMailFilter.js`. Note GMail has a 1500 character limit on filters, so this script splits the filter string at the 1500 character limit.
 
 Run with:
 

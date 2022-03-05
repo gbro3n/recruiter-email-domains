@@ -31,13 +31,29 @@ if (argsArray.length === 1) {
             }
         }
 
-        const filterString = `${filterElementsArray.join(' OR ')}`;
-
         // GMail has a filter limit of 1500 characters.
 
-        // TODO: Split on element boundary, not just on 1500 character limit
+        const splitFilterStrings = []; 
 
-        const splitFilterStrings = filterString.match(/.{1,1500}/g)
+        let currentSplitFilterString = '';
+
+        for (var i = 0; i < filterElementsArray.length; i++)
+        {
+            if(currentSplitFilterString.length < 1500 && i < filterElementsArray.length - 1)
+            {
+                currentSplitFilterString += ' OR ' + filterElementsArray[i];
+            }
+            else
+            {
+                // Append string less leading ' OR '
+
+                splitFilterStrings.push(currentSplitFilterString.substring(4));
+
+                // Reset string
+
+                currentSplitFilterString = '';
+            }   
+        }
 
         let fileString = 'Filters are split according to GMails 1500 character limit.\n\n';
 

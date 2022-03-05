@@ -1,10 +1,14 @@
 # Recruiter Email Domains
 
-This is a list of recruiter email domains to assist with the filtering of email as a result of job searches. **This is NOT a spam list** - recruiter contact is welcome and essential for my work, but filtering makes it much easier to separate recruiter email so I can review at a convenient time.
+This is a list of technical recruiter email domains to assist with the filtering of email from recruitment companies. **This is NOT a spam list** - recruiter contact is welcome and essential, but filtering makes it much easier to separate recruiter email for review at a convenient time.
 
 Other means of managing excessive email from job / contract searches might include maintaining alternate email accounts.
 
-This repository is an invite for others to share domains via pull request. Please try to order alphabetically check for duplicatesand before creating pull requests as I have not yet built a means of doing so.
+This repository is an invite for others to share domains via pull request. Please try to order alphabetically before submitting pull requests (you can use the `orderDomainFile.js` script to sort domains in the file if required).
+
+```
+$ node orderDomainFile.js uk-recruiter-email-domains.txt 
+```
 
 ## Creating a filter in GMail
 

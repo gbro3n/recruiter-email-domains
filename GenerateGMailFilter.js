@@ -9,9 +9,9 @@ if (argsArray.length === 1) {
 
         // Read file and split into line data
 
-        const envVariablesFileText = fs.readFileSync(`./${domainsFile}`, 'utf8');
+        const fileText = fs.readFileSync(`./${domainsFile}`, 'utf8');
 
-        const lineTextArray = envVariablesFileText.split(/\r?\n/);
+        const lineTextArray = fileText.split(/\r?\n/);
 
         let filterElementsArray = [];
 

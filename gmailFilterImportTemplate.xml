@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'>
+	<title>Mail Filters</title>
+	<id>tag:mail.google.com,2008:filters:1524239727930</id>
+	<updated>2022-03-17T20:22:38Z</updated>
+	<author>
+		<name>Recruiter Email Filters</name>
+		<email>mail@appsoftware.com.com</email>
+	</author>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1524239727930</id>
+		<updated>2022-03-17T20:22:38Z</updated>
+		<content></content>
+		<apps:property name='from' value='${filters}'/>
+		<apps:property name='label' value='recruiters'/>
+		<apps:property name='shouldMarkAsRead' value='true'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+</feed>

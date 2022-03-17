@@ -7,15 +7,21 @@ if (argsArray.length === 1) {
 
     if (domainsFile.endsWith('.txt')) {
 
+        const outputFolderName = 'output';
+
+        // Create output folder if doesn't exist
+
+        if (!fs.existsSync(outputFolderName)){
+            fs.mkdirSync(outputFolderName);
+        }
+
         // Read file and split into line data
 
         const fileText = fs.readFileSync(`./${domainsFile}`, 'utf8');
 
-        const filterImportTemplateText = fs.readFileSync(`./gmailFilterImportTemplate.xml`, 'utf8');
-
         const lineTextArray = fileText.split(/\r?\n/);
 
-        let filterElementsArray = [];
+        let emailFilterElementsArray = [];
 
         for (let i = 0; i < lineTextArray.length; i++) {
             let lineText = lineTextArray[i];
@@ -27,68 +33,77 @@ if (argsArray.length === 1) {
                     // Check line is not comment
 
                     if (!lineText.startsWith('#')) {
-                        filterElementsArray.push('*@' + lineText);
+                        emailFilterElementsArray.push('*@' + lineText);
                     }
                 }
             }
         }
 
-        // GMail has a filter limit of 1500 characters.
+        const copyPasteFilterStrings = []; 
 
-        const splitFilterStrings = []; 
+        let currentCopyPasteFilterString = '';
 
-        let currentSplitFilterString = '';
+        let importFileFilterString = '';
 
-        let importString = '';
+        // GMail has a filter limit of 1500 characters where filter string is copied manually into filters UI.
 
-        for (var i = 0; i < filterElementsArray.length; i++)
+        for (var i = 0; i < emailFilterElementsArray.length; i++)
         {
-            if(currentSplitFilterString.length < 1500 && i < filterElementsArray.length - 1)
+            // Append until 1500 char limit and then push, reset
+
+            if(currentCopyPasteFilterString.length < 1500 && i < emailFilterElementsArray.length - 1)
             {
-                currentSplitFilterString += ' OR ' + filterElementsArray[i];
+                currentCopyPasteFilterString += ' OR ' + emailFilterElementsArray[i];
             }
             else
             {
                 // Append string less leading ' OR '
 
-                splitFilterStrings.push(currentSplitFilterString.substring(4));
+                copyPasteFilterStrings.push(currentCopyPasteFilterString.substring(4));
 
                 // Reset string
 
-                currentSplitFilterString = '';
+                currentCopyPasteFilterString = '';
             }   
         }
 
-        for (var i = 0; i < filterElementsArray.length; i++)
+        // There does not appear to be such a limit for import filter files, so append all
+
+        for (var i = 0; i < emailFilterElementsArray.length; i++)
         {
-            importString += ' OR ' + filterElementsArray[i];
+            importFileFilterString += ' OR ' + emailFilterElementsArray[i];
         }
 
-        if(importString.length > 0)
+        // Trim leading leading ' OR '
+
+        if(importFileFilterString.length > 0)
         {
-            importString = importString.substring(4);
+            importFileFilterString = importFileFilterString.substring(4);
         }
+
+        // Output copy past filters file ...
 
         let fileString = 'Filters are split according to GMails 1500 character limit.\n\n';
 
-        for(var i = 0; i < splitFilterStrings.length; i++)
+        for(var i = 0; i < copyPasteFilterStrings.length; i++)
         {
             fileString += `Filter ${i + 1}:\n`
-            fileString += splitFilterStrings[i] + '\n\n';
+            fileString += copyPasteFilterStrings[i] + '\n\n';
         }
 
-        console.log(splitFilterStrings);
+        fs.writeFileSync(`${outputFolderName}/gmailFilterCopyPaste.txt`, fileString);
 
-        const outputFileName = 'gmail-filters-from-' + domainsFile;
+        // Output XML import file ...
 
-        fs.writeFileSync(outputFileName, fileString);
+        const filterImportTemplateText = fs.readFileSync(`./gmailFilterImportTemplate.xml`, 'utf8');
 
-        const gmailFilterImportXml = filterImportTemplateText.replace('${filters}', importString);
+        const gmailFilterImportXml = filterImportTemplateText.replace('${filters}', importFileFilterString);
 
-        fs.writeFileSync('gmailFilterImportXml.xml', gmailFilterImportXml);
+        fs.writeFileSync(`${outputFolderName}/gmailFilterImportXml.xml`, gmailFilterImportXml);
 
-        console.log(fileString);
-        console.log(`Output to ${outputFileName}`);
+        // Finished
+
+        console.log(`Complete. Check output folder.`);
     }
     else
     {

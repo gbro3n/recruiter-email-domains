@@ -31,6 +31,12 @@ if (argsArray.length === 1) {
             }
         }
 
+        // Remove duplicates
+
+        elementsArray = [...new Set(elementsArray)];
+
+        // Sort
+
         elementsArray.sort();
 
         let fileString = '';
@@ -51,4 +57,8 @@ if (argsArray.length === 1) {
     {
         console.log(`Expected .txt file (domains files)`);
     }
+}
+else
+{
+    console.log(`No domain file argument supplied`);
 }

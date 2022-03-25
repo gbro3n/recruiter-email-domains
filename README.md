@@ -44,8 +44,8 @@ Note that GMail has a 1500 character limit on filters where, so this script spli
 
 ## Contributing
 
-This repository is an invite for others to share domains via pull request. Please try to order alphabetically before submitting pull requests (you can use the `orderDomainFile.js` script to sort domains in the file if required).
+This repository is an invite for others to share domains via pull request. Please try to order alphabetically before submitting pull requests (you can use the `cleanDomainFile.js` script to sort and de-dupe domains in the file if required).
 
 ```
-$ node orderDomainFile.js uk-recruiter-email-domains.txt 
+$ node cleanDomainFile.js uk-recruiter-email-domains.txt 
 ```

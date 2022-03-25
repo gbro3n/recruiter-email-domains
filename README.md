@@ -17,6 +17,19 @@ Note that upto date output import files are included in this repository under th
 
 ## Creating Filters From Output in GMail
 
+### Using Import XML Output File
+
+- In GMail, in the top-right corner, click the gear icon to access your "Settings"
+- Click "Settings"
+- Navigate to the "Filters and Blocked Addresses" tab.
+- Click the 'Import filters' link.
+- Select the file `gmailFilterImportXml.xml` from the output folder.
+- Click 'Open file' button.
+
+You will see a new filter with a collection of email domains as below.
+
+![](https://raw.githubusercontent.com/garethrbrown/recruiter-email-domains/main/images/example-gmail-import.png)
+
 ### Using Copy Paste Filter Output File
 
 Note that GMail has a 1500 character limit on filters where, so this script splits the filter string at the 1500 character limit. This limit does not appear to apply when using import XML file below.
@@ -28,15 +41,6 @@ Note that GMail has a 1500 character limit on filters where, so this script spli
 - In the 'From' field, paste each import string from `gmailFilterCopyPaste.txt` in the output folder.
 - Click the 'Search' button.
 - From there you can continue to apply labels etc and create the filter.
-
-### Using Import XML Output File
-
-- In GMail, in the top-right corner, click the gear icon to access your "Settings"
-- Click "Settings"
-- Navigate to the "Filters and Blocked Addresses" tab.
-- Click the 'Import filters' link.
-- Select the file `gmailFilterImportXml.xml` from the output folder.
-- Click 'Open file' button.
 
 ## Contributing
 
